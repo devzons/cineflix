@@ -14,3 +14,4 @@ npm install --legacy-peer-deps @mui/styles
 ### eslint issue
 
 `ESLINT_NO_DEV_ERRORS=true` in .env
+`//eslint-disable-next-line`
