@@ -1,8 +1,88 @@
-const Sidebar = () => {
+import { useEffect } from 'react'
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  ListItemIcon,
+  Box,
+  CircularProgress,
+} from '@mui/material'
+import { Link } from 'react-router-dom'
+import { useTheme } from '@mui/styles'
+import useStyles from './styles'
+
+const Categories = [
+  { label: 'Popular', value: 'popular' },
+  { label: 'Top Rated', value: 'top_rated' },
+  { label: 'Upcoming', value: 'upcoming' },
+]
+
+const demoCategories = [
+  { label: 'Comedy', value: 'comedy' },
+  { label: 'Action', value: 'action' },
+  { label: 'Horror', value: 'horror' },
+  { label: 'Animation', value: 'animation' },
+]
+
+const redLogo =
+  'https://fontmeme.com/permalink/230415/1117ddfeee5d74995e9ab6ca5b029df8.png'
+const blueLogo =
+  'https://fontmeme.com/permalink/230415/87040a23b9b330d61fbe95078ace7eff.png'
+
+const Sidebar = ({ setMobileOpen }) => {
+  const theme = useTheme()
+  const classes = useStyles()
+
   return (
-    <div>
-      <h1>Sidebar</h1>
-    </div>
+    <>
+      <Link to='/' className={classes.imageLink}>
+        <img
+          src={theme.palette.mode === 'light' ? blueLogo : redLogo}
+          alt='Cineflix Logo'
+          className={classes.image}
+        />
+      </Link>
+      <Divider />
+      <List>
+        <ListSubheader>Categories</ListSubheader>
+        {Categories.map(({ label, value }) => (
+          <Link key={value} className={classes.links} to='/'>
+            <ListItem onClick={() => {}}>
+              {/* <ListItemIcon>
+                <img
+                  src={redLogo}
+                  alt=''
+                  className={classes.genreImage}
+                  height={30}
+                />
+              </ListItemIcon> */}
+              <ListItemText primary={label} />
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        <ListSubheader>Genres</ListSubheader>
+        {demoCategories.map(({ label, value }) => (
+          <Link key={value} className={classes.links} to='/'>
+            <ListItem onClick={() => {}}>
+              {/* <ListItemIcon>
+                <img
+                  src={redLogo}
+                  alt=''
+                  className={classes.genreImage}
+                  height={30}
+                />
+              </ListItemIcon> */}
+              <ListItemText primary={label} />
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+    </>
   )
 }
 
