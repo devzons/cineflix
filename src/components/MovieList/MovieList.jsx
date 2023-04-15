@@ -1,8 +1,16 @@
-const MovieList = () => {
+import { Grid } from '@mui/material'
+import useStyles from './styles'
+import { Movie } from '..'
+
+const MovieList = ({ movies }) => {
+  const classes = useStyles()
+
   return (
-    <div>
-      <h1>MovieList</h1>
-    </div>
+    <Grid container className={classes.movieContainer}>
+      {movies.results.map((movie, i) => (
+        <Movie key={i} movie={movie} i={i} />
+      ))}
+    </Grid>
   )
 }
 
