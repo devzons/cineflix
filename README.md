@@ -58,3 +58,7 @@ const blueLogo =
 
 [url=https://fontmeme.com/netflix-font/][img]https://fontmeme.com/permalink/230415/87040a23b9b330d61fbe95078ace7eff.png[/img][/url]
 ```
+
+### TMDB API documentation
+
+`https://developers.themoviedb.org/3/getting-started/introduction`
