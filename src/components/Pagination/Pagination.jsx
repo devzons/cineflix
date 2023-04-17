@@ -21,11 +21,11 @@ const Pagination = ({ currentPage, setPage, totalPages }) => {
   return (
     <div className={classes.container}>
       <Button
-        onClick={handlePrev}
         variant='contained'
         className={classes.button}
         color='primary'
         type='button'
+        onClick={handlePrev}
       >
         Prev
       </Button>
@@ -33,11 +33,11 @@ const Pagination = ({ currentPage, setPage, totalPages }) => {
         {currentPage}
       </Typography>
       <Button
-        onClick={handleNext}
         variant='contained'
         className={classes.button}
         color='primary'
         type='button'
+        onClick={handleNext}
       >
         Next
       </Button>
