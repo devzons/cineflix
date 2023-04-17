@@ -13,7 +13,7 @@ const Movie = ({ movie, i }) => {
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                : 'https://placekitten.com/200/300'
+                : 'https://picsum.photos/200/300'
             }
             alt={movie.title}
             className={classes.image}

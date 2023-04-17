@@ -63,6 +63,8 @@ const blueLogo =
 
 `https://developers.themoviedb.org/3/getting-started/introduction`
 
+- actor - `/person/{person_id}`
+
 ### git push error
 
 ```-bash
@@ -74,3 +76,7 @@ error: failed to push some refs to 'https://git....'
 ```-bash
 git pull --rebase origin [branch]
 ```
+
+### react-router-dom v6
+
+`useHistory()` is replaced by `useNavigate()`
