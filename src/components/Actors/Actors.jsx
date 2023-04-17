@@ -31,7 +31,7 @@ const Actors = () => {
       <Box display='flex' alignItems='center' justifyContent='center'>
         <Button
           startIcon={<ArrowBack />}
-          onClick={() => navigate.goBack()}
+          onClick={() => navigate(-1)}
           color='primary'
         >
           Go back
@@ -76,7 +76,7 @@ const Actors = () => {
             </Button>
             <Button
               startIcon={<ArrowBack />}
-              onClick={() => navigate.goBack()}
+              onClick={() => navigate(-1)}
               color='primary'
             >
               Back

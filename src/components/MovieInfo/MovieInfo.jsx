@@ -120,7 +120,7 @@ const MovieInfo = () => {
 
   return (
     <Grid container className={classes.containerSpaceAround}>
-      <Grid item sm={12} lg={4} align='center'>
+      <Grid item sm={12} lg={4}>
         <img
           src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
           className={classes.poster}

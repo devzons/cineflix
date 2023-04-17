@@ -21,7 +21,7 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       margin: '0 auto !imporatant',
       width: '100%',
-      height: 'auto',
+      height: '350px',
       marginBottom: '30px',
     },
   },
