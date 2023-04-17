@@ -1,3 +1,5 @@
+// Get access to profile name or id from redux state
+
 const Profile = () => {
   return (
     <div>

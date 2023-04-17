@@ -62,3 +62,15 @@ const blueLogo =
 ### TMDB API documentation
 
 `https://developers.themoviedb.org/3/getting-started/introduction`
+
+### git push error
+
+```-bash
+error: failed to push some refs to 'https://git....'
+```
+
+- solution
+
+```-bash
+git pull --rebase origin [branch]
+```
