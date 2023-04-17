@@ -17,7 +17,7 @@ import {
   Favorite,
   FavoriteBorderOutlined,
   Remove,
-  Arrow,
+  ArrowBack,
 } from '@mui/icons-material'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -33,6 +33,39 @@ const MovieInfo = () => {
   const { data, isFeching, error } = useGetMovieQuery(id)
   const classes = useStyles()
   const dispatch = useDispatch()
+
+  const isMovieFavorited = false
+  const isMovieWatchlisted = false
+
+  const addToFavorites = async () => {
+    await axios.post(
+      `https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${
+        process.env.REACT_APP_TMDB_KEY
+      }&session_id=${localStorage.getItem('session_id')}`,
+      {
+        media_type: 'movie',
+        media_id: id,
+        favorite: !isMovieFavorited,
+      }
+    )
+
+    setIsMovieFavorited((prev) => !prev)
+  }
+
+  const addToWatchList = async () => {
+    await axios.post(
+      `https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${
+        process.env.REACT_APP_TMDB_KEY
+      }&session_id=${localStorage.getItem('session_id')}`,
+      {
+        media_type: 'movie',
+        media_id: id,
+        watchlist: !isMovieWatchlisted,
+      }
+    )
+
+    setIsMovieWatchlisted((prev) => !prev)
+  }
 
   if (isFeching) {
     return (
@@ -103,6 +136,105 @@ const MovieInfo = () => {
               </Typography>
             </Link>
           ))}
+        </Grid>
+        <Typography variant='h5' gutterBottom style={{ marginTop: '20px' }}>
+          Overview
+        </Typography>
+        <Typography style={{ marginBottom: '2rem' }}>
+          {data?.overview}
+        </Typography>
+        <Typography variant='h5' gutterBottom>
+          Top Cast
+        </Typography>
+        <Grid item container spacing={2}>
+          {data &&
+            data?.credits?.cast
+              ?.map(
+                (character, i) =>
+                  character.profile_path && (
+                    <Grid
+                      key={i}
+                      item
+                      xs={4}
+                      md={2}
+                      component={Link}
+                      to={`/actors/${character.id}`}
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <img
+                        className={classes.castImage}
+                        src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
+                        alt={character.name}
+                      />
+                      <Typography color='textPrimary' align='center'>
+                        {character?.name}
+                      </Typography>
+                      <Typography color='textSecondary' align='center'>
+                        {character.character.split('/')[0]}
+                      </Typography>
+                    </Grid>
+                  )
+              )
+              .slice(0, 6)}
+        </Grid>
+        <Grid item container style={{ marginTop: '2rem' }}>
+          <div className={classes.buttonContainer}>
+            <Grid item xs={12} sm={6} className={classes.buttonContainer}>
+              <ButtonGroup size='medium' variant='outlined'>
+                <Button
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  href={data?.homepage}
+                  endIcon={<Language />}
+                >
+                  Website
+                </Button>
+                <Button
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  href={`https://www.imdb.com/title/${data?.imdb_id}`}
+                  endIcon={<MovieIcon />}
+                >
+                  IMDB
+                </Button>
+                <Button onClick={() => {}} href='#' endIcon={<Theaters />}>
+                  Trailer
+                </Button>
+              </ButtonGroup>
+            </Grid>
+            <Grid item xs={12} sm={6} className={classes.buttonContainer}>
+              <ButtonGroup size='medium' variant='outlined'>
+                <Button
+                  onClick={addToFavorites}
+                  endIcon={
+                    isMovieFavorited ? <FavoriteBorderOutlined /> : <Favorite />
+                  }
+                >
+                  {isMovieFavorited ? 'Unfavorite' : 'Favorite'}
+                </Button>
+                <Button
+                  onClick={addToWatchList}
+                  endIcon={isMovieWatchlisted ? <Remove /> : <PlusOne />}
+                >
+                  Watchlist
+                </Button>
+                <Button
+                  endIcon={<ArrowBack />}
+                  sx={{ borderColor: 'primary.main' }}
+                >
+                  <Typography
+                    variant='subtitle2'
+                    component={Link}
+                    to='/'
+                    color='inherit'
+                    sx={{ textDecoration: 'none' }}
+                  >
+                    Back
+                  </Typography>
+                </Button>
+              </ButtonGroup>
+            </Grid>
+          </div>
         </Grid>
       </Grid>
     </Grid>
