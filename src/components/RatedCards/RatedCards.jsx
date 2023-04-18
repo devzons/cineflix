@@ -1,9 +1,23 @@
-const RatedCard = () => {
+import { Typography, Box } from '@mui/material'
+
+import useStyles from './styles'
+import { Movie } from '../index'
+
+const RatedCards = ({ title, movies }) => {
+  const classes = useStyles()
+
   return (
-    <div>
-      <h1>RatedCard</h1>
-    </div>
+    <Box>
+      <Typography variant='h5' gutterBottom>
+        {title}
+      </Typography>
+      <Box display='flex' flexWrap='wrap' className={classes.container}>
+        {movies?.results.map((movie, i) => (
+          <Movie key={movie.id} movie={movie} i={i} />
+        ))}
+      </Box>
+    </Box>
   )
 }
 
-export default RatedCard
+export default RatedCards

@@ -32,11 +32,12 @@ import {
 } from '../../services/TMDB'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory'
 import genreIcons from '../../assets/genres'
+import { userSelector } from '../../features/auth'
 
 const MovieInfo = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
-  const { user } = useSelector((state) => state.user)
+  const { user } = useSelector(userSelector)
   const { id } = useParams()
 
   const { data, error, isFetching } = useGetMovieQuery(id)
@@ -66,6 +67,7 @@ const MovieInfo = () => {
       !!favoriteMovies?.results?.find((movie) => movie?.id === data?.id)
     )
   }, [favoriteMovies, data])
+
   useEffect(() => {
     setIsMovieWatchlisted(
       !!watchlistMovies?.results?.find((movie) => movie?.id === data?.id)
