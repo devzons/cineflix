@@ -3,7 +3,7 @@
 ## Install Dependencies
 
 ```-bash
-npm install @mui/material @emotion/react @emotion/styled @mui/icons-material axios @reduxjs/toolkit react-redux react-router-dom
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material axios @reduxjs/toolkit react-redux react-router-dom @alan-ai/alan-sdk-web
 npm install --legacy-peer-deps @mui/styles
 ```
 
@@ -80,3 +80,36 @@ git pull --rebase origin [branch]
 ### react-router-dom v6
 
 `useHistory()` is replaced by `useNavigate()`
+
+## Alan.app
+
+- TMDB Genres
+
+```
+const genres = [
+  { "id": 28, "name": "Action" },
+  { "id": 12, "name": "Adventure" },
+  { "id": 16, "name": "Animation" },
+  { "id": 35, "name": "Comedy" },
+  { "id": 80, "name": "Crime" },
+  { "id": 99, "name": "Documentary" },
+  { "id": 18, "name": "Drama" },
+  { "id": 10751, "name": "Family" },
+  { "id": 14, "name": "Fantasy" },
+  { "id": 36, "name": "History" },
+  { "id": 27, "name": "Horror" },
+  { "id": 10402, "name": "Music" },
+  { "id": 9648, "name": "Mystery" },
+  { "id": 10749, "name": "Romance" },
+  { "id": 878, "name": "Science Fiction" },
+  { "id": 10770, "name": "TV Movie" },
+  { "id": 53, "name": "Thriller" },
+  { "id": 10752, "name": "War" },
+  { "id": 37, "name": "Western" },
+]
+```
+
+## Deploy
+
+- create .env.production file
+  `DISABLE_ESLINT_PLUGIN=true`

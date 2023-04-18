@@ -12,22 +12,22 @@ import {
 import { Link } from 'react-router-dom'
 import { useTheme } from '@mui/styles'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { useGetGenresQuery } from '../../services/TMDB'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory'
-
 import genreIcons from '../../assets/genres'
 import useStyles from './styles'
+
+const redLogo =
+  'https://fontmeme.com/permalink/230415/1117ddfeee5d74995e9ab6ca5b029df8.png'
+const blueLogo =
+  'https://fontmeme.com/permalink/230415/87040a23b9b330d61fbe95078ace7eff.png'
 
 const Categories = [
   { label: 'Popular', value: 'popular' },
   { label: 'Top Rated', value: 'top_rated' },
   { label: 'Upcoming', value: 'upcoming' },
 ]
-
-const redLogo =
-  'https://fontmeme.com/permalink/230415/1117ddfeee5d74995e9ab6ca5b029df8.png'
-const blueLogo =
-  'https://fontmeme.com/permalink/230415/87040a23b9b330d61fbe95078ace7eff.png'
 
 const Sidebar = ({ setMobileOpen }) => {
   const { genreIdOrCategoryName } = useSelector(
@@ -37,6 +37,10 @@ const Sidebar = ({ setMobileOpen }) => {
   const classes = useStyles()
   const { data, isFetching } = useGetGenresQuery()
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [genreIdOrCategoryName])
 
   return (
     <>
