@@ -113,3 +113,7 @@ const genres = [
 
 - create .env.production file
   `DISABLE_ESLINT_PLUGIN=true`
+
+### Live site
+
+`https://cineflex.dimshift.com/`
