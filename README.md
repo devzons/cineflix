@@ -116,4 +116,4 @@ const genres = [
 
 ### Live site
 
-`https://cineflex.dimshift.com/`
+[https://cineflex.dimshift.com](https://cineflex.dimshift.com/)
